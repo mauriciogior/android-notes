@@ -1,6 +1,8 @@
 package com.rosanarogiski.notes.adapter;
 
 import android.app.Activity;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
@@ -8,8 +10,10 @@ import android.widget.ImageView;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
+import com.rosanarogiski.notes.NoteActivity;
 import com.rosanarogiski.notes.R;
 import com.rosanarogiski.notes.bean.Note;
+import com.rosanarogiski.notes.util.BitmapCompressor;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -56,14 +60,26 @@ public class NoteAdapter extends BaseAdapter {
         RatingBar noteRating = (RatingBar) convertView.findViewById(R.id.noteRating);
         ImageView noteThumbnail = (ImageView) convertView.findViewById(R.id.noteThumbnail);
 
-        Note note = dataList.get(position);
+        final Note note = dataList.get(position);
 
         noteTitle.setText(note.getTitle());
         noteRating.setRating(note.getRating());
 
-        if (note.getImage() != null) {
-            noteThumbnail.setImageBitmap(note.getImage());
+        if (note.getImagesSrc() != null && note.getImagesSrc().size() > 0) {
+            BitmapCompressor.compressAndSet(Uri.parse(note.getImagesSrc().get(0)),
+                    noteThumbnail,
+                    activity);
         }
+
+        noteThumbnail.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(activity, NoteActivity.class);
+                intent.putExtra("id", note.getId());
+
+                activity.startActivity(intent);
+            }
+        });
 
         return convertView;
     }

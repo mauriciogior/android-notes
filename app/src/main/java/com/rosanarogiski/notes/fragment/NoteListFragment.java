@@ -66,12 +66,11 @@ public class NoteListFragment extends Fragment {
 
             case R.id.action_add_note:
                 Intent intent = new Intent(getActivity(), NewNoteActivity.class);
-                startActivity(intent);
+                getActivity().startActivityForResult(intent, 10);
                 return true;
 
         }
 
         return super.onOptionsItemSelected(item);
     }
-
 }

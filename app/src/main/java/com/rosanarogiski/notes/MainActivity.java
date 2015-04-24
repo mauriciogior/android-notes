@@ -1,5 +1,6 @@
 package com.rosanarogiski.notes;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
@@ -65,4 +66,12 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+
+        homePagerAdapter = new HomePagerAdapter(getSupportFragmentManager());
+
+        viewPager.setAdapter(homePagerAdapter);
+    }
 }

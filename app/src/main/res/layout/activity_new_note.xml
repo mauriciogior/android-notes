@@ -1,28 +1,38 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="10dp">
+    android:weightSum="1">
 
-    <EditText android:id="@+id/noteTitle"
+    <FrameLayout
+        android:id="@+id/container"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+    </FrameLayout>
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Note Title"/>
+        android:orientation="horizontal"
+        android:weightSum="1">
 
-    <EditText android:id="@+id/noteSubject"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Note Subject" />
+        <Button android:id="@+id/cancelButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="Cancel"/>
 
-    <EditText android:id="@+id/noteCourse"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Note Course" />
+        <Button android:id="@+id/continueButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight=".5"
+            android:text="Continue"/>
 
-    <EditText android:id="@+id/noteTags"
-        android:layout_width="match_parent"
-        android:layout_height="200dp"
-        android:hint="Note Tags" />
+    </LinearLayout>
 
 </LinearLayout>
