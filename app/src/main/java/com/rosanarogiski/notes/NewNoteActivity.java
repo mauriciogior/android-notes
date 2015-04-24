@@ -41,6 +41,8 @@ public class NewNoteActivity extends ActionBarActivity {
 
         setContentView(R.layout.activity_new_note);
 
+        getSupportActionBar().setTitle("New Note");
+
         continueButton = (Button) findViewById(R.id.continueButton);
         cancelButton = (Button) findViewById(R.id.cancelButton);
         continueButton.setEnabled(false);
