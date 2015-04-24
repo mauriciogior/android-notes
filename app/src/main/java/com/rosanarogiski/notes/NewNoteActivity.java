@@ -17,6 +17,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -134,7 +135,7 @@ public class NewNoteActivity extends ActionBarActivity {
                     }
 
                     String path = Environment.getExternalStorageDirectory().toString();
-                    File file = new File(path, "test123.jpg"); // the File to save to
+                    File file = new File(path, "notes" + String.valueOf(new Date().getTime()) + ".jpg"); // the File to save to
                     OutputStream fOut = new FileOutputStream(file);
 
                     img.compress(Bitmap.CompressFormat.JPEG, 85, fOut); // saving the Bitmap to a file compressed as a JPEG with 85% compression rate

@@ -23,12 +23,16 @@ import java.util.List;
  */
 public class NoteAdapter extends BaseAdapter {
 
-    private List<Note> dataList;
+    private List<Note> dataList = new ArrayList<>();
     private Activity activity;
 
     public NoteAdapter(Activity activity) {
         this.activity = activity;
         dataList = new ArrayList<Note>();
+    }
+
+    public void addToDataList(Note note) {
+        dataList.add(note);
     }
 
     public void setDataList(List<Note> dataList) {
@@ -77,7 +81,7 @@ public class NoteAdapter extends BaseAdapter {
                 Intent intent = new Intent(activity, NoteActivity.class);
                 intent.putExtra("id", note.getId());
 
-                activity.startActivity(intent);
+                activity.startActivityForResult(intent, 10);
             }
         });
 

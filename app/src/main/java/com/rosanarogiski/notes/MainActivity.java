@@ -36,7 +36,7 @@ public class MainActivity extends ActionBarActivity {
 
     class HomePagerAdapter extends FragmentStatePagerAdapter {
 
-        String[] TITLES = {"Recent", "Uploads", "Downloads"};
+        String[] TITLES = {"All", "Recent", "Uploads", "Downloads"};
 
         List<Fragment> fragmentList;
 
@@ -45,9 +45,10 @@ public class MainActivity extends ActionBarActivity {
 
             fragmentList = new ArrayList<Fragment>();
 
-            fragmentList.add(new NoteListFragment());
-            fragmentList.add(new NoteListFragment());
-            fragmentList.add(new NoteListFragment());
+            fragmentList.add(new NoteListFragment(NoteListFragment.ALL));
+            fragmentList.add(new NoteListFragment(NoteListFragment.RECENT));
+            fragmentList.add(new NoteListFragment(NoteListFragment.UPLOAD));
+            fragmentList.add(new NoteListFragment(NoteListFragment.DOWNLOAD));
         }
 
         @Override

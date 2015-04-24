@@ -90,7 +90,7 @@ public class PictureAdapter extends BaseAdapter {
 
         if (position == dataSet.size()) {
 
-            viewHolder.image.setImageResource(android.R.drawable.ic_menu_add);
+            viewHolder.image.setImageResource(R.drawable.add_icon);
             viewHolder.deleteButton.setVisibility(View.GONE);
 
             viewHolder.deleteButton.setOnClickListener(null);

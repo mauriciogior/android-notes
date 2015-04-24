@@ -52,6 +52,19 @@ public class NewNoteFragment extends Fragment {
         note.setCourse(noteCourse.getText().toString());
         note.setTags(noteTags.getText().toString());
         note.setImagesSrc(imageList);
+        note.setTimestamp(new Date().getTime());
+
+        if (note.findAll().size() < 3) {
+            note.setAuthor("Peter Brent");
+            note.setUpload(false);
+            note.setDownload(false);
+            note.setVisualized(false);
+        } else {
+            note.setAuthor("Rosana Rogiski");
+            note.setUpload(true);
+            note.setDownload(false);
+            note.setVisualized(true);
+        }
 
         note.save();
 

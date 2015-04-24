@@ -46,8 +46,9 @@ public class NotePictureAdapter extends BaseAdapter {
         return 0;
     }
 
-    private class ViewHolder {
+    public static class ViewHolder {
         public ImageView image;
+        public Uri imageSrc;
     }
 
     @Override
@@ -68,6 +69,8 @@ public class NotePictureAdapter extends BaseAdapter {
         BitmapCompressor.compressAndSet(dataSet.get(position),
                 viewHolder.image,
                 activity);
+
+        viewHolder.imageSrc = dataSet.get(position);
 
         return convertView;
     }

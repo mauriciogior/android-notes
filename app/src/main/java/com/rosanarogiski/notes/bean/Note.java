@@ -9,10 +9,13 @@ import java.util.List;
 /**
  * Created by mauricio on 4/21/15.
  */
-public class Note extends Model<Note> {
+public class Note extends Model<Note> implements Comparable<Note> {
 
     @ModelField
     private String id;
+
+    @ModelField
+    private String author;
 
     @ModelField
     private String title;
@@ -35,6 +38,14 @@ public class Note extends Model<Note> {
     @ModelField
     private long timestamp;
 
+    @ModelField
+    private boolean upload;
+
+    @ModelField
+    private boolean download;
+
+    @ModelField
+    private boolean visualized;
 
 
     public Note() { super(Note.class, true); }
@@ -50,6 +61,14 @@ public class Note extends Model<Note> {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public String getTitle() {
@@ -108,4 +127,32 @@ public class Note extends Model<Note> {
         this.timestamp = timestamp;
     }
 
+    public boolean isUpload() {
+        return upload;
+    }
+
+    public void setUpload(boolean upload) {
+        this.upload = upload;
+    }
+
+    public boolean isDownload() {
+        return download;
+    }
+
+    public void setDownload(boolean download) {
+        this.download = download;
+    }
+
+    public boolean isVisualized() {
+        return visualized;
+    }
+
+    public void setVisualized(boolean visualized) {
+        this.visualized = visualized;
+    }
+
+    @Override
+    public int compareTo(Note another) {
+        return (int) (another.getTimestamp() - timestamp);
+    }
 }
